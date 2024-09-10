@@ -33,16 +33,20 @@ export default {
 </script>
 
 <style>
-.el-tabs__item {
+#ReadTab {
+  height: 90vh;
+}
+
+#ReadTab .el-tabs__item {
   font-size: 24px;
   line-height: 100px;
 }
 
-.el-tabs__nav {
+#ReadTab .el-tabs__nav {
   height: 100px;
 }
 
-.el-tabs__active-bar {
+#ReadTab .el-tabs__active-bar {
   height: 5px;
 }
 </style>

@@ -3,8 +3,6 @@ import login from './login.vue'
 //引入elm组件
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-//引入store
-import store from '@/store'
 //引入VueRouter
 import VueRouter from 'vue-router'
 //引入路由器
@@ -16,7 +14,6 @@ Vue.use(VueRouter)
 
 new Vue({
   render: h => h(login),
-  store,
   router,
   beforeCreate() {
     Vue.prototype.$bus = this

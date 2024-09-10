@@ -25,10 +25,15 @@ export default {
 </script>
 
 <style>
-#tab-Index,
-#tab-My {
-  height: 100px;
+#Footer #tab-Index,
+#Footer #tab-My {
+  height: 10vh;
   width: 339px;
   font-size: 30px;
+}
+
+#Footer .el-tabs__item {
+  font-size: 24px;
+  line-height: 10vh;
 }
 </style>

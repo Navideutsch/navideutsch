@@ -1,6 +1,6 @@
 <template>
-  <div id="Exercises" style="height: 670px;">
-    <el-row v-show=Flag>
+  <div id="Exercises" style="height: 75vh;">
+    <el-row>
       <el-col :span="12" v-for="item in items" :key="item.id" class="card">
         <el-card :body-style="{ padding: '0px' }" @click.native="Read(item)">
           <div class="image">图片</div>
@@ -8,7 +8,6 @@
         </el-card>
       </el-col>
     </el-row>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -18,35 +17,30 @@ export default {
   name: 'Exercises',
   data() {
     return {
-      Flag: true,
       items: [
         {
-          id: "001",
+          id: "1",
+          title: "Band 1, Einheit 5, Text 2"
+        },
+        {
+          id: "2",
           title: "文本名称"
         },
         {
-          id: "002",
+          id: "3",
           title: "文本名称"
         },
         {
-          id: "003",
-          title: "文本名称"
-        },
-        {
-          id: "004",
+          id: "4",
           title: "文本名称"
         }]
     }
   },
   methods: {
     Read(item) {
-      this.Flag = false
       this.$router.push({
         name: 'article',
-        query: {
-          id: item.id,
-          title: item.title
-        }
+        params: { articleId: item.id, }
       })
     }
   }
@@ -81,5 +75,6 @@ export default {
 
 .card {
   padding: 30px 50px;
+  cursor: pointer;
 }
 </style>

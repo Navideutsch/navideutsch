@@ -3,8 +3,6 @@ import App from './App.vue'
 //引入elm组件
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-//引入store
-import store from './store'
 //引入VueRouter
 import VueRouter from 'vue-router'
 //引入路由器
@@ -12,6 +10,8 @@ import router from './router'
 //引入axios
 import axios from 'axios'
 Vue.prototype.$axios = axios
+//引入mock
+import "./mock/index.js"
 
 Vue.config.productionTip = false
 
@@ -29,7 +29,6 @@ Vue.use(VueRouter)
 
 new Vue({
   render: h => h(App),
-  store,
   router,
   beforeCreate() {
     Vue.prototype.$bus = this

@@ -5,9 +5,9 @@ import User from '@/views/User.vue'
 import ReadTab from '@/components/ReadTab.vue'
 import Exercises from '@/views/Exercises.vue'
 import Collect from '@/views/Collect.vue'
-import router from '@/router'
 //创建并暴露一个路由器
 export default new VueRouter({
+  mode:'hash',
   routes: [
     {
       name: 'user',
@@ -31,7 +31,7 @@ export default new VueRouter({
         },
         {
           name: 'article',
-          path: 'article',
+          path: 'article/:articleId',
           component: Article
         }
       ]
