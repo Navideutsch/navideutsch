@@ -24,7 +24,7 @@
         </el-menu-item>
       </el-menu>
       <div style="display: flex; justify-content: center;">
-        <el-button type="danger" round class="logout">退出登录</el-button>
+        <el-button type="danger" round class="logout" @click="Login">登录</el-button>
       </div>
     </div>
     <router-view></router-view>
@@ -43,6 +43,9 @@ export default {
     handleSelect(key) {
       console.log(key);
       this.$router.push({ name: 'collect', })
+    },
+    Login() {
+      location.href = "login.html"
     }
   }
 }
