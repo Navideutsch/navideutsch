@@ -2,6 +2,7 @@
   <div id="app" class="w">
     <router-view></router-view>
     <Footer ref="Footer" class="Footer"></Footer>
+
   </div>
 </template>
 
@@ -45,16 +46,14 @@ body {
 
 .w {
   position: relative;
-  width: 680px;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
-  border: 1px solid black;
 }
 
 .Footer {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  width: 100%;
 }
 </style>

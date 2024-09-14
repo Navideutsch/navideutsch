@@ -25,7 +25,7 @@
       <div v-for="(paragraph, index) in paragraphs" :key="paragraph.paragraphId" class="paragraph">
         <transition name="fade">
           <!-- 根据全局状态或段落单独状态决定显示内容 -->
-          <div class="text-content"
+          <div class="text-content" :ref="'textContent' + index"
             v-html="paragraph.showOriginal !== null ? (paragraph.showOriginal ? paragraph.paragraphContent : paragraph.paragraphTranslation) : (globalShowAllOriginal ? paragraph.paragraphContent : paragraph.paragraphTranslation)">
           </div>
         </transition>
@@ -82,17 +82,57 @@ export default {
             ...paragraph,
             showOriginal: null // 段落的原文/译文状态，初始化为 null 表示跟随全局
           }));
+          this.getClick();
         } else {
           throw new Error('未收到有效响应数据');
         }
       } catch (error) {
         console.error(error);
       }
+    },
+    getClick() {
+      this.$nextTick(() => {
+        this.paragraphs.forEach((paragraph, index) => {
+          const textElement = this.$refs['textContent' + index];
+          // 检查 textElement 是否是数组，如果是，取第一个元素
+          const actualElement = Array.isArray(textElement) ? textElement[0] : textElement;
+          if (actualElement) {
+            actualElement.addEventListener('click', (event) => {
+              const clickedText = event.target;
+              if (clickedText.nodeType === Node.ELEMENT_NODE) {
+                const word = this.getSelectedWord();
+                console.log(word); // 显示段落和提取的单词
+              }
+            });
+          }
+        });
+      });
+    },
+    getSelectedWord() {
+      const selection = window.getSelection();
+      const range = selection.getRangeAt(0);
+
+      // 获取被点击的完整句子或段落
+      const fullText = range.startContainer.textContent;
+
+      // 获取点击的字符位置
+      const clickOffset = range.startOffset;
+
+      // 从点击的位置向前和向后查找完整单词
+      const wordStart = fullText.slice(0, clickOffset).search(/\b\w+\b$/); // 向前找
+      const wordEnd = fullText.slice(clickOffset).search(/\b\W/); // 向后找
+
+      // 提取出完整单词
+      const word = fullText.slice(
+        wordStart,
+        clickOffset + (wordEnd > -1 ? wordEnd : fullText.length)
+      );
+      return word.trim();
     }
   },
   mounted() {
     this.getOriginalText();
-  }
+  },
 }
 </script>
 
@@ -107,7 +147,7 @@ export default {
 }
 
 .ArticleName {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -125,7 +165,7 @@ export default {
 }
 
 .tag {
-  font-size: 20px;
+  font-size: 14px;
   margin-right: 10px;
 }
 
@@ -139,12 +179,22 @@ export default {
   max-height: 52vh;
   overflow-y: auto;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 10px;
+
+  /* 启用移动端惯性滚动 */
+  -webkit-overflow-scrolling: touch;
+
+  /* 启用平滑滚动 */
+  scroll-behavior: smooth;
+}
+
+.text-wrapper::-webkit-scrollbar {
+  display: none;
+  /* 针对 Chrome, Safari 以及 Edge */
 }
 
 .text-content {
-  font-size: 24px;
+  font-size: 14px;
   line-height: 1.6;
   text-align: justify;
 }
@@ -162,19 +212,5 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-
-/* 自定义滚动条样式 */
-.text-wrapper::-webkit-scrollbar {
-  width: 8px;
-}
-
-.text-wrapper::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
-}
-
-.text-wrapper::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
 }
 </style>

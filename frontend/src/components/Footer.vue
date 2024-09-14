@@ -27,13 +27,13 @@ export default {
 <style>
 #Footer #tab-Index,
 #Footer #tab-My {
-  height: 10vh;
-  width: 339px;
-  font-size: 30px;
+  height: 8vh;
+  font-size: 24px;
+  width: 50%;
 }
 
 #Footer .el-tabs__item {
   font-size: 24px;
-  line-height: 10vh;
+  line-height: 8vh;
 }
 </style>

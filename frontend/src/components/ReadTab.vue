@@ -38,12 +38,12 @@ export default {
 }
 
 #ReadTab .el-tabs__item {
-  font-size: 24px;
-  line-height: 100px;
+  font-size: 16px;
+  line-height: 75px;
 }
 
 #ReadTab .el-tabs__nav {
-  height: 100px;
+  height: 75px;
 }
 
 #ReadTab .el-tabs__active-bar {

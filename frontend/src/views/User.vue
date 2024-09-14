@@ -4,7 +4,7 @@
       <div style="display: flex; justify-content: center;">
         <el-avatar :size="75" :src="circleUrl" class="Avatar"></el-avatar>
       </div>
-      <h1 style="text-align: center;margin-bottom: 40px;">用户名</h1>
+      <h1 style="text-align: center;margin-bottom: 30px;">用户名</h1>
       <el-menu class="el-menu-vertical-demo" @select="handleSelect">
         <el-menu-item index="1">
           <i class="el-icon-setting"></i>
@@ -57,12 +57,12 @@ export default {
 }
 
 #User .el-menu-item {
-  font-size: 2em;
+  font-size: 24px;
   font-weight: bolder;
   padding-left: 20px;
   height: 80px;
   line-height: 80px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 #User .el-menu-item:hover {
@@ -70,20 +70,20 @@ export default {
 }
 
 #User .el-menu-item span {
-  margin-left: 50px;
+  margin-left: 25px;
 }
 
 #User .el-menu-item [class^=el-icon-] {
-  font-size: 24px;
-  margin-left: 80px;
+  font-size: 20px;
+  margin-left: 15px;
 }
 
 .logout {
-  font-size: 38px;
-  margin-top: 6%;
+  font-size: 26px;
+  margin-top: 35px;
 }
 
 #User .el-button.is-round {
-  padding: 15px 50px;
+  padding: 13px 50px;
 }
 </style>

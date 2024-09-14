@@ -19,7 +19,7 @@ export default {
     return {
       items: [
         {
-          id: "12345",
+          id: "1",
           title: "Band 1, Einheit 5, Text 2"
         },
         {
@@ -68,13 +68,14 @@ export default {
 }
 
 .text {
-  font-size: 20px;
+  font-size: 14px;
   text-align: center;
-  padding: 14px;
+  padding: 0 14px 10px;
+  height: 30px;
 }
 
 .card {
-  padding: 30px 50px;
+  padding: 15px 25px;
   cursor: pointer;
 }
 </style>

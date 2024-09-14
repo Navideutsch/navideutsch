@@ -10,8 +10,6 @@ import router from './router'
 //引入axios
 import axios from 'axios'
 Vue.prototype.$axios = axios
-//引入mock
-import "./mock/index.js"
 
 Vue.config.productionTip = false
 
