@@ -3,8 +3,10 @@ import VueRouter from 'vue-router'
 import Article from '@/views/Articles'
 import User from '@/views/User.vue'
 import ReadTab from '@/components/ReadTab.vue'
-import Exercises from '@/views/Exercises.vue'
+import ExercisesCatalog from '@/views/ExercisesCatalog.vue'
+import Exercise from '@/views/Exercise.vue'
 import Collect from '@/views/Collect.vue'
+
 //创建并暴露一个路由器
 export default new VueRouter({
   mode:'hash',
@@ -25,14 +27,19 @@ export default new VueRouter({
       component: ReadTab,
       children: [
         {
-          name: 'exercises',
-          path: 'exercises',
-          component: Exercises
+          name: 'ExercisesCatalog',
+          path: 'ExercisesCatalog',
+          component: ExercisesCatalog
         },
         {
           name: 'article',
           path: 'article/:articleId',
           component: Article
+        },
+        {
+          name: 'Exercise',
+          path: 'Exercise/:articleId:title',
+          component: Exercise
         }
       ]
     },

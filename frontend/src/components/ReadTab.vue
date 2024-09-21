@@ -22,12 +22,12 @@ export default {
   methods: {
     handleClick() {
       if (this.activeName === 'exercises') {
-        this.$router.push({ name: 'exercises' })
+        this.$router.push({ name: 'ExercisesCatalog' })
       }
     },
   },
   mounted() {
-    this.$router.push({ name: 'exercises' })
+    this.$router.push({ name: 'ExercisesCatalog' })
   }
 }
 </script>

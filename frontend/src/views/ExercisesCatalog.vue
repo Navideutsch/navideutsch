@@ -1,5 +1,5 @@
 <template>
-  <div id="Exercises" style="height: 75vh;">
+  <div id="ExercisesCatalog" style="height: 75vh;">
     <el-row>
       <el-col :span="12" v-for="item in items" :key="item.id" class="card">
         <el-card :body-style="{ padding: '0px' }" @click.native="Read(item)">
@@ -14,7 +14,7 @@
 <script>
 
 export default {
-  name: 'Exercises',
+  name: 'ExercisesCatalog',
   data() {
     return {
       items: [

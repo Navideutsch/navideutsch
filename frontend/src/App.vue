@@ -8,13 +8,12 @@
 
 <script>
 import ReadTab from '@/components/ReadTab.vue'
-import Exercises from '@/views/Exercises'
 import Footer from '@/components/Footer.vue'
 import User from '@/views/User.vue'
 export default {
   name: 'App',
   components: {
-    ReadTab, Exercises, Footer, User
+    ReadTab, Footer, User
   },
   data() {
     return {

@@ -35,7 +35,13 @@
             '显示译文' : '显示原文') }}
         </el-button>
       </div>
+      <div style="width: 100%;margin-top: 20px;text-align: center;">
+        <el-button type="primary" @click="GoToExercise" style="width: 75%;">
+          去练习
+        </el-button>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -128,6 +134,16 @@ export default {
         clickOffset + (wordEnd > -1 ? wordEnd : fullText.length)
       );
       return word.trim();
+    },
+    GoToExercise() {
+      this.$router.push({
+        name: 'Exercise',
+        params:
+        {
+          articleId: this.article.articleId,
+          title: this.article.title
+        }
+      })
     }
   },
   mounted() {
@@ -138,16 +154,23 @@ export default {
 
 <style>
 #Articles {
-  padding: 10px;
+  padding: 0 10px;
 }
 
 .article-header {
+  display: flex;
   text-align: center;
-  margin-bottom: 20px;
+  /* 使用 Flexbox 布局 */
+  justify-content: center;
+  /* 水平居中 */
+  align-items: center;
+  /* 垂直居中（可选） */
+  width: 100%;
+  height: 76px;
 }
 
 .ArticleName {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: bold;
 }
 
@@ -155,7 +178,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 0 20px;
 }
 
@@ -176,9 +199,9 @@ export default {
 
 /* 滚动文本部分 */
 .text-wrapper {
-  max-height: 52vh;
+  max-height: 60vh;
   overflow-y: auto;
-  padding: 20px;
+  padding: 10px 20px 5px;
   border-radius: 10px;
 
   /* 启用移动端惯性滚动 */
